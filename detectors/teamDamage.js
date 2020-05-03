@@ -6,6 +6,9 @@ module.exports = (demoFile, sid, data) => {
         if (!attacker || attacker.steam64Id === "BOT" || attacker.steam64Id !== sid.getSteamID64() || victim === attacker) {
             return;
         }
+        isNotMolotovInc = (event) => {
+            return event.weapon != "incgrenade" && event.weapon != "molotov";
+        }
         if(attacker.teamNumber === victim.teamNumber){
             data.curcasetempdata.teamDamage_infractions += event.dmg_health;
             //console.log(event.weapon);
